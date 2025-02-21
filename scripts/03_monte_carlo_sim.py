@@ -1,3 +1,4 @@
+from utils import *
 import matplotlib.pyplot as plt
 
 # Monte Carlo Simulation

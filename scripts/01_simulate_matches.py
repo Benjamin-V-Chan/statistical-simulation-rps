@@ -1,21 +1,5 @@
-import random
 import csv
-from collections import defaultdict
-
-# Define RPS moves
-MOVES = ["Rock", "Paper", "Scissors"]
-
-# Define strategy functions
-def random_strategy():
-    return random.choice(MOVES)
-
-def win_stay_lose_shift(prev_move, prev_outcome):
-    if prev_outcome == "win":
-        return prev_move
-    return random.choice(MOVES)
-
-def tit_for_tat(opponent_last_move):
-    return opponent_last_move if opponent_last_move else random.choice(MOVES)
+from utils import *
 
 # Simulate a game
 def simulate_game(strategy1, strategy2, num_rounds=1000):
@@ -32,14 +16,6 @@ def simulate_game(strategy1, strategy2, num_rounds=1000):
         p1_last_move, p2_last_move = p1_move, p2_move
 
     return history
-
-# Determine winner
-def determine_winner(move1, move2):
-    if move1 == move2:
-        return "draw"
-    elif (move1, move2) in [("Rock", "Scissors"), ("Scissors", "Paper"), ("Paper", "Rock")]:
-        return "win"
-    return "loss"
 
 # Save results
 def save_results_to_csv(data, filename="data/match_history.csv"):
