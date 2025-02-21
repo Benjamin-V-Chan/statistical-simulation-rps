@@ -4,6 +4,57 @@
 
 This project is a **highly advanced statistical simulation** of Rock-Paper-Scissors (RPS) strategies, exploring **decision patterns, predictive modeling, and strategy matchups** through various mathematical techniques, including **Markov Chains, Bayesian Inference, Monte Carlo Simulations, Reinforcement Learning, and ELO Rating Systems**.
 
+### **Mathematical Foundations**
+
+#### **Markov Chain Analysis**
+A Markov Chain is a **stochastic process** that satisfies the Markov property, meaning that the next state depends only on the current state.
+
+The state transition matrix $P$ for the strategies is computed as:
+
+$$P = \begin{bmatrix} p_{RR} & p_{RP} & p_{RS} \\ p_{PR} & p_{PP} & p_{PS} \\ p_{SR} & p_{SP} & p_{SS} \end{bmatrix}$$
+
+where each $p_{ij}$ represents the probability of transitioning from move $i$ to move $j$. The **steady-state distribution** $\pi$ satisfies:
+
+$$\pi P = \pi$$
+
+which gives long-term behavior predictions of strategies.
+
+#### **Bayesian Inference for Move Prediction**
+Bayes' theorem allows us to update our belief about the opponent’s next move based on prior knowledge:
+
+$$P(M | D) = \frac{P(D | M) P(M)}{P(D)}$$
+
+where:
+- $P(M | D)$ is the posterior probability of the move $M$ given data $D$.
+- $P(D | M)$ is the likelihood of data given move $M$.
+- $P(M)$ is the prior probability of move $M$.
+- $P(D)$ is the total probability of the observed data.
+
+#### **Monte Carlo Simulation**
+Monte Carlo methods are used to estimate the long-term performance of different strategies by running **thousands of simulated matches**. The expectation of the win rate $E(W)$ is approximated as:
+
+$$E(W) \approx \frac{1}{N} \sum_{i=1}^{N} W_i$$
+
+where $W_i$ is the win outcome of match $i$ and $N$ is the number of trials.
+
+#### **ELO Rating System for Strategy Evolution**
+The ELO rating is updated based on match results:
+
+$$R' = R + K (S - E)$$
+
+where:
+- $R'$ is the new rating,
+- $R$ is the current rating,
+- $K$ is the adjustment factor,
+- $S$ is the actual match outcome (1 win, 0 loss, 0.5 draw),
+- $E$ is the expected outcome computed as:
+
+$$E = \frac{1}{1 + 10^{(R_{opp} - R)/400}}$$
+
+which models probability of winning against an opponent with rating $R_{opp}$.
+
+---
+
 ## Folder Structure
 
 ```
