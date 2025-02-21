@@ -1,5 +1,6 @@
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
+import pandas as pd
 
 df = pd.read_csv("data/match_history.csv")
 df["Move_Num"] = df["P1_Move"].map({"Rock": 0, "Paper": 1, "Scissors": 2})

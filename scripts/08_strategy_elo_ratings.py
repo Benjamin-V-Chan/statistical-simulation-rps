@@ -1,4 +1,6 @@
 import trueskill
+import matplotlib.pyplot as plt
+import random
 
 env = trueskill.TrueSkill(draw_probability=0.1)
 strategy_ratings = {s: env.create_rating() for s in ["Random", "Tit-for-Tat", "Markov", "Win-Stay-Lose-Shift"]}
